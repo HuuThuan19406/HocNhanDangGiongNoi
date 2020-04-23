@@ -22,4 +22,14 @@
         android:layout_height="wrap_content"
         android:autoSizeMaxTextSize="20dp"
         android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btnThucThi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorPressedHighlight"
+        android:text="Thực thi lệnh"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold" />
+
 </LinearLayout>

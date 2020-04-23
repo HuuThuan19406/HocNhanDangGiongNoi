@@ -3,6 +3,8 @@ package nguyenhuuthuan.com.example.hocnhandanggiongnoi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 //import android.speech.RecognitionListener;
 import android.speech.RecognitionListener;
@@ -21,6 +23,7 @@ public class GoogleRecognitionWithoutDialog extends AppCompatActivity implements
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
     private String LOG_TAG = "VoiceRecognitionActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,50 @@ public class GoogleRecognitionWithoutDialog extends AppCompatActivity implements
                 speech.startListening(recognizerIntent);
             }
         });
+        binding.btnThucThi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    xuLyThongTin();
+                }
+                catch (Exception e){
+                }
+            }
+        });
+    }
+
+    private void xuLyThongTin() {
+        String st=binding.txtKetQua.getText().toString();
+        st=st.toLowerCase();
+        String[] keysTatPhanMem=new String[]{"thoát","tắt","đóng","rời khỏi","ngừng"};
+        for(String item : keysTatPhanMem) {
+            if (st.contains(item))
+                finishAndRemoveTask();
+        }
+        if (st.contains("đỏ")){
+            binding.btnThucThi.setBackgroundColor(Color.RED);
+            return;
+        }
+        if (st.contains("vàng")){
+            binding.btnThucThi.setBackgroundColor(Color.YELLOW);
+            return;
+        }
+        if (st.contains("lục")){
+            binding.btnThucThi.setBackgroundColor(Color.GREEN);
+            return;
+        }
+        if (st.contains("lam")){
+            binding.btnThucThi.setBackgroundColor(Color.BLUE);
+            return;
+        }
+        if (st.contains("đen")){
+            binding.btnThucThi.setBackgroundColor(Color.BLACK);
+            return;
+        }
+        if (st.contains("trắng")){
+            binding.btnThucThi.setBackgroundColor(Color.WHITE);
+            return;
+        }
     }
 
     @Override
